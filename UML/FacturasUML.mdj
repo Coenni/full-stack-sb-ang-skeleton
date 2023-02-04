@@ -63,7 +63,7 @@
 											"top": 151,
 											"width": 137.28076171875,
 											"height": 13,
-											"text": "Cliente"
+											"text": "client"
 										},
 										{
 											"_type": "LabelView",
@@ -152,7 +152,7 @@
 											"top": 189,
 											"width": 137.28076171875,
 											"height": 13,
-											"text": "-nombre: String",
+											"text": "-name: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -169,7 +169,7 @@
 											"top": 204,
 											"width": 137.28076171875,
 											"height": 13,
-											"text": "-apellido: String",
+											"text": "-lastname: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -220,7 +220,7 @@
 											"top": 249,
 											"width": 137.28076171875,
 											"height": 13,
-											"text": "-facturas: List<Factura>",
+											"text": "-invoices: List<Invoice>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -343,7 +343,7 @@
 											"top": 151,
 											"width": 124.64892578125,
 											"height": 13,
-											"text": "Factura"
+											"text": "Invoice"
 										},
 										{
 											"_type": "LabelView",
@@ -466,7 +466,7 @@
 											"top": 219,
 											"width": 124.64892578125,
 											"height": 13,
-											"text": "-fecha: Date",
+											"text": "-createdAt: Date",
 											"horizontalAlignment": 0
 										}
 									],
@@ -627,7 +627,7 @@
 											"top": 383,
 											"width": 141.2607421875,
 											"height": 13,
-											"text": "LineaFactura"
+											"text": "LineaInvoice"
 										},
 										{
 											"_type": "LabelView",
@@ -699,7 +699,7 @@
 											"top": 406,
 											"width": 141.2607421875,
 											"height": 13,
-											"text": "-cantidad: Integer",
+											"text": "-quantity: Integer",
 											"horizontalAlignment": 0
 										}
 									],
@@ -841,7 +841,7 @@
 											"top": 383,
 											"width": 104.43798828125,
 											"height": 13,
-											"text": "Producto"
+											"text": "product"
 										},
 										{
 											"_type": "LabelView",
@@ -913,7 +913,7 @@
 											"top": 406,
 											"width": 104.43798828125,
 											"height": 13,
-											"text": "-nombre: String",
+											"text": "-name: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -930,7 +930,7 @@
 											"top": 421,
 											"width": 104.43798828125,
 											"height": 13,
-											"text": "-precio: Long",
+											"text": "-price: Long",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1291,7 +1291,7 @@
 							"top": 80,
 							"width": 137,
 							"height": 25,
-							"text": "Cliente 1:N Factura"
+							"text": "client 1:N Invoice"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -1593,7 +1593,7 @@
 							"top": 488,
 							"width": 249,
 							"height": 25,
-							"text": "1 LineaFact tiene 1 atributo Producto"
+							"text": "1 LineaFact tiene 1 atributo product"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -1895,7 +1895,7 @@
 							"top": 296,
 							"width": 160,
 							"height": 38,
-							"text": "Factura debe tener al menos 1 LineaFactura"
+							"text": "Invoice debe tener al menos 1 LineaInvoice"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -1940,7 +1940,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Cliente",
+					"name": "client",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -1988,7 +1988,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFxRRidACsFlIY="
 							},
-							"name": "nombre",
+							"name": "name",
 							"visibility": "private",
 							"type": "String"
 						},
@@ -1998,7 +1998,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFxRRidACsFlIY="
 							},
-							"name": "apellido",
+							"name": "lastname",
 							"visibility": "private",
 							"type": "String"
 						},
@@ -2028,9 +2028,9 @@
 							"_parent": {
 								"$ref": "AAAAAAFxRRidACsFlIY="
 							},
-							"name": "facturas",
+							"name": "invoices",
 							"visibility": "private",
-							"type": "List<Factura>"
+							"type": "List<Invoice>"
 						}
 					]
 				},
@@ -2040,7 +2040,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Factura",
+					"name": "Invoice",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -2136,7 +2136,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFxRRjS2Cswe2A="
 							},
-							"name": "fecha",
+							"name": "createdAt",
 							"visibility": "private",
 							"type": "Date"
 						}
@@ -2179,7 +2179,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "LineaFactura",
+					"name": "LineaInvoice",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -2301,7 +2301,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFxRRk5wCtbShg="
 							},
-							"name": "cantidad",
+							"name": "quantity",
 							"visibility": "private",
 							"type": "Integer"
 						}
@@ -2334,7 +2334,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Producto",
+					"name": "product",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -2342,7 +2342,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFxRRlsbyuGzcU="
 							},
-							"name": "nombre",
+							"name": "name",
 							"visibility": "private",
 							"type": "String"
 						},
@@ -2352,7 +2352,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFxRRlsbyuGzcU="
 							},
-							"name": "precio",
+							"name": "price",
 							"visibility": "private",
 							"type": "Long"
 						}

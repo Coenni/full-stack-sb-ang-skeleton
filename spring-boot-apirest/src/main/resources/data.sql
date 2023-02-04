@@ -7,7 +7,7 @@ VALUES
 (5, 'North America'),
 (6, 'Middle East');
 
-INSERT INTO clientes (nombre, apellido, email, created_at, region_id) 
+INSERT INTO clients (name, lastname, email, created_at, region_id)
 VALUES 
 ('Eduardo', 'Cristóbal', 'edu_ce_1988@hotmail.com', '2019-12-16 16:50:12.646', 3),
 ('Jonh', 'Doe', 'johndoe@gmail.com', '2019-12-16 16:51:12.646', 5),
@@ -95,26 +95,26 @@ VALUES
 ('Inma', 'Smith', 'jbanaansfdg3sdf@gmail.com', '2020-01-30 23:52:12.646', 1),
 ('Kobe', 'Legend', 'jbannaasdfgs3dfg@gmail.com', '2020-01-30 23:52:12.646', 2);
 
-INSERT INTO usuarios (username, password, enabled) 
+INSERT INTO users (username, password, enabled) 
 VALUES 
 ('eduardo', '$2a$10$LhX3sOD9hJnO4HYwEdmKuOW3JYCh/CPFRYxW7R2whwetfIV/wZdqq', 1),
 ('admin', '$2a$10$8CmHTgDYdCgFC6VHahNGgugnIOY/LiC37L1jaK2vmu4MJUPzDKTlS', 1);
 
-INSERT INTO roles (nombre) 
+INSERT INTO roles (name) 
 VALUES 
 ('ROLE_USER'),
 ('ROLE_ADMIN');
 
-INSERT INTO usuarios_roles (usuario_id, role_id) 
+INSERT INTO user_roles (user_id, role_id) 
 VALUES 
 (1, 1),
 (2, 1),
 (2, 2);
 
--- SELECT * FROM usuarios u LEFT JOIN usuarios_roles ur ON u.id = ur.usuario_id LEFT JOIN roles r ON ur.role_id = r.id;  -- see users & roles
+-- SELECT * FROM users u LEFT JOIN user_roles ur ON u.id = ur.user_id LEFT JOIN roles r ON ur.role_id = r.id;  -- see users & roles
 
 /* Populate tabla productos */
-INSERT INTO productos (nombre, precio, created_at) 
+INSERT INTO products (name, price, created_at)
 VALUES
 ('Panasonic Pantalla LCD', 259990, NOW()),
 ('Sony Camara digital DSC-W320B', 123490, NOW()),
@@ -124,13 +124,13 @@ VALUES
 ('Bianchi Bicicleta Aro 26', 69990, NOW()),
 ('Mica Comoda 5 Cajones', 299990, NOW());
 
-/* Creamos algunas facturas */
-INSERT INTO facturas (descripcion, observacion, cliente_id, created_at) 
+/* Creamos algunas invoices */
+INSERT INTO invoices (description, note, client_id, created_at)
 VALUES
-('Factura equipos de oficina', null, 1, NOW()),
-('Factura Bicicleta', 'Alguna nota importante!', 1, NOW());
+('Invoice workshop equipment', null, 1, NOW()),
+('Bicycle Invoice', 'some important note!', 1, NOW());
 
-INSERT INTO facturas_items (cantidad, factura_id, producto_id) 
+INSERT INTO invoice_items (quantity, invoice_id, product_id)
 VALUES
 (1, 1, 1),
 (2, 1, 4),

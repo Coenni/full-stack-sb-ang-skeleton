@@ -23,11 +23,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	// Security rules of our resources endpoints
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/clientes", "/api/clientes/page/**", "/api/uploads/img/**", "/images/**").permitAll() // public route
-//			.antMatchers(HttpMethod.GET, "/api/clientes/{id}").hasAnyRole("ADMIN", "USER")
-//			.antMatchers(HttpMethod.POST, "/api/clientes/upload").hasAnyRole("ADMIN", "USER")
-//			.antMatchers(HttpMethod.POST, "/api/clientes").hasRole("ADMIN")
-//			.antMatchers("/api/clientes/**").hasRole("ADMIN")
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/clients", "/api/clients/page/**", "/api/uploads/img/**", "/images/**").permitAll() // public route
+//			.antMatchers(HttpMethod.GET, "/api/clients/{id}").hasAnyRole("ADMIN", "USER")
+//			.antMatchers(HttpMethod.POST, "/api/clients/upload").hasAnyRole("ADMIN", "USER")
+//			.antMatchers(HttpMethod.POST, "/api/clients").hasRole("ADMIN")
+//			.antMatchers("/api/clients/**").hasRole("ADMIN")
 			.antMatchers("/h2-console/**").permitAll()
 			.anyRequest().authenticated() // all other urls can be access by any authenticated role
 			.and().headers().frameOptions().sameOrigin()

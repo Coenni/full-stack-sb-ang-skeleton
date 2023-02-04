@@ -15,21 +15,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ecristobale.spring.boot.apirest.models.dao.IImgPerfilDao;
-import com.ecristobale.spring.boot.apirest.models.entity.ImgPerfil;
+import com.ecristobale.spring.boot.apirest.models.dao.ProfileImgDao;
+import com.ecristobale.spring.boot.apirest.models.entity.ProfileImg;
 
 @Service
 public class UploadFileServiceImpl implements IUploadFileService {
 	
 	@Autowired
-	private IImgPerfilDao imgPerfilDao;
+	private ProfileImgDao imgPerfilDao;
 	
 //	private static final String PATH_UPLOADS = "uploads";
 	private final Logger log = LoggerFactory.getLogger(UploadFileServiceImpl.class);
 
 //	Load file (DB storage) 
 	@Override
-	public ImgPerfil loadFile(String filename) throws MalformedURLException {
+	public ProfileImg loadFile(String filename) throws MalformedURLException {
 		return imgPerfilDao.findByFilename(filename);
 	}
 
@@ -46,11 +46,11 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	@Transactional
 	public String uploadFile(MultipartFile file) throws IOException {
 		String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename().replace(" ", "");
-		ImgPerfil imgPerfil = new ImgPerfil();
-		imgPerfil.setFilename(filename);
-		imgPerfil.setImg(file.getBytes());
-		imgPerfil.setFileType(file.getContentType());
-		imgPerfilDao.save(imgPerfil);
+		ProfileImg profileImg = new ProfileImg();
+		profileImg.setFilename(filename);
+		profileImg.setImg(file.getBytes());
+		profileImg.setFileType(file.getContentType());
+		imgPerfilDao.save(profileImg);
 		log.info(filename);
 		return filename;
 	}

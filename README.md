@@ -1,7 +1,7 @@
 # web-app-full-stack: Spring Boot 2 & Angular 8
 ## Links for visiting webapp:
-- Google Firebase: https://clientes-app-ecristobale.web.app/clientes
-- Heroku (backend only): https://spring-boot-2clientes-app.herokuapp.com/
+- Google Firebase: https://clients-app-ecristobale.web.app/clients
+- Heroku (backend only): https://spring-boot-2clients-app.herokuapp.com/
 
 Main page without login:
 ![Alt text](web-app-screenshots/main_page.PNG?raw=true "Main Page")
@@ -44,3 +44,23 @@ Invoice details with user role:
 
 Logout action:
 ![Alt text](web-app-screenshots/Logout_action.PNG?raw=true "Logout Page")
+
+# UPDATE:
+I liked the project idea and believe can be used as a skeleton for a new project.
+But it was outdated and was open to refactoring, so I decided to do it myself
+# DONE
+- translating to english
+- adding lombok
+- upgrading angular and all other libs
+# TODO
+- FE/BE add user management module
+- FE/BE add inbox module
+- FE/BE add chat module
+- FE/BE add notification module
+- FE/BE dockerize
+- BE replace controller pojos with dtos and implement mappings
+- FE add multilang support
+- FE/BE openapi/swagger Contract First Approach
+- BE upgrade java/mvn
+- BE extract auth to separate service
+- FE/BE test coverage

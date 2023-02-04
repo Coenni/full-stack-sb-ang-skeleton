@@ -1,0 +1,57 @@
+<app-client-detail *ngIf="selectedClient" [client] = "selectedClient"></app-client-detail>
+<div class="card border-primary mb-3">
+    <div class="card-header">clients</div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">List of clients</h5>
+
+        <div class="my-2 text-left">
+            <button *ngIf="authService.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clients/form']">Create client</button>
+        </div>
+
+        <table class="table table-bordered table-striped" *ngIf="clients?.length>0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>name</th>
+                    <th>lastname</th>
+                    <th>email</th>
+                    <th>Created</th>
+                    <th *ngIf="authService.hasRole('ROLE_ADMIN')">create invoice</th>
+                    <th *ngIf="authService.hasRole('ROLE_ADMIN')">edit</th>
+                    <th *ngIf="authService.hasRole('ROLE_ADMIN')">delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let client of clients">
+                    <td *ngIf="authService.hasRole('ROLE_USER') else elseBlock"><img *ngIf="client?.photo" (click)="openModal(client)" style="width: 64px; cursor: pointer;"
+                        src="{{urlBackend}}/api/uploads/img/{{client.photo}}" alt="{{client.photo}}" class="img-thumbnail rounded">
+                        <img *ngIf="!client?.photo" (click)="openModal(client)" style="width: 64px; cursor: pointer;"
+                        src="{{urlBackend}}/images/not-photo.png" alt="No photo" class="img-thumbnail rounded">
+                    </td>
+                    <ng-template #elseBlock>
+                        <td><img *ngIf="client?.photo" (click)="signInMessage()" style="width: 64px; cursor: pointer;"
+                            src="{{urlBackend}}/api/uploads/img/{{client.photo}}" alt="{{client.photo}}" class="img-thumbnail rounded">
+                            <img *ngIf="!client?.photo" (click)="signInMessage()" style="width: 64px; cursor: pointer;"
+                            src="{{urlBackend}}/images/not-photo.png" alt="No photo" class="img-thumbnail rounded">
+                        </td>
+                    </ng-template>
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.lastname | uppercase }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>{{ client.createdAt | date:"EEEE dd, MMMM yyyy" }}</td>
+                    <td *ngIf="authService.hasRole('ROLE_ADMIN')"><button type="button" [routerLink]="['/invoices/form', client.id]" class="btn btn-success btn-sm">create invoice</button></td>
+                    <td *ngIf="authService.hasRole('ROLE_ADMIN')">
+                        <button type="button" name="edit" [routerLink]="['/clients/form', client.id]" class="btn btn-primary btn-sm">edit</button>
+                    </td>
+                    <td *ngIf="authService.hasRole('ROLE_ADMIN')">
+                        <button type="button" name="delete" (click)="delete(client)" class="btn btn-danger btn-sm">delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <paginator-nav *ngIf="paginator" [paginator] = "paginator"></paginator-nav>
+        <div class="alert alert-info" *ngIf="clients?.length==0">
+          There are no records in the database.
+        </div>
+    </div>
+</div>

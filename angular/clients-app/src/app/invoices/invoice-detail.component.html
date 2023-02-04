@@ -1,0 +1,53 @@
+<div class="card bg-light" *ngIf="invoice">
+    <div class="card-header">{{title}}: {{invoice.description}}</div>
+    <div class="card-body">
+        <h4 class="card-title">
+            <a [routerLink]="['/clients']" class="btn btn-light btn-xs">&laquo; back</a>
+        </h4>
+
+        <ul class="list-group my-2">
+            <li class="list-group-item list-group-item-primary">Client data</li>
+            <li class="list-group-item">{{invoice.client.name}}</li>
+            <li class="list-group-item">{{invoice.client.lastname}}</li>
+        </ul>
+
+        <ul class="list-group my-2">
+            <li class="list-group-item list-group-item-primary">Invoice data</li>
+            <li class="list-group-item">Id: {{invoice.id}}</li>
+            <li class="list-group-item">Description: {{invoice.description}}</li>
+            <li class="list-group-item">Created At: {{invoice.createdAt}}</li>
+        </ul>
+
+        <table class="table table-striped table-hover table-bordered my-3">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of invoice.invoiceItems">
+                    <td>{{item.product.name}}</td>
+                    <td>{{item.product.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.calculatedImport}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h5 class="float-right">
+            <span>Total: </span><span class="badge badge-secondary">{{invoice.total}}</span>
+        </h5>
+
+        <div class="card border-info mb-4" style="max-width: 350px;">
+            <div class="card card-header">
+                Notes
+            </div>
+            <div class="card card-body">
+                <p *ngIf="invoice.note">{{invoice.note}}</p>
+                <p *ngIf="!invoice.note">No note</p>
+            </div>
+        </div>
+    </div>
+</div>

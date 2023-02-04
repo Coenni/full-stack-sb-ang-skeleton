@@ -26,12 +26,12 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "{{clienteAppSecret}}",
+							"value": "{{clientAppSecret}}",
 							"type": "string"
 						},
 						{
 							"key": "username",
-							"value": "{{clienteApp}}",
+							"value": "{{clientApp}}",
 							"type": "string"
 						}
 					]
@@ -72,24 +72,24 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes",
+			"name": "http://localhost:8081/api/clients",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes",
+					"raw": "{{urlHost}}{{restApiService}}/clients",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes"
+						"clients"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes/regiones",
+			"name": "http://localhost:8081/api/clients/regiones",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -104,12 +104,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes/regiones",
+					"raw": "{{urlHost}}{{restApiService}}/clients/regiones",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes",
+						"clients",
 						"regiones"
 					]
 				}
@@ -117,7 +117,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes/upload",
+			"name": "http://localhost:8081/api/clients/upload",
 			"event": [
 				{
 					"listen": "test",
@@ -125,7 +125,7 @@
 						"id": "0cfd3f1a-1d0c-4258-b8a4-7a18cb90f5cb",
 						"exec": [
 							"var data = pm.response.json();\r",
-							"pm.collectionVariables.set(\"photo\", data.cliente.photo);"
+							"pm.collectionVariables.set(\"photo\", data.client.photo);"
 						],
 						"type": "text/javascript"
 					}
@@ -160,12 +160,12 @@
 					]
 				},
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes/upload",
+					"raw": "{{urlHost}}{{restApiService}}/clients/upload",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes",
+						"clients",
 						"upload"
 					]
 				}
@@ -202,7 +202,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes/page/{page} FIRST",
+			"name": "http://localhost:8081/api/clients/page/{page} FIRST",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -217,12 +217,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes/page/0",
+					"raw": "{{urlHost}}{{restApiService}}/clients/page/0",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes",
+						"clients",
 						"page",
 						"0"
 					]
@@ -231,7 +231,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes/{id}",
+			"name": "http://localhost:8081/api/clients/{id}",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -246,12 +246,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes/3",
+					"raw": "{{urlHost}}{{restApiService}}/clients/3",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes",
+						"clients",
 						"3"
 					]
 				}
@@ -259,7 +259,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes/{id} WITHOUT AUTH",
+			"name": "http://localhost:8081/api/clients/{id} WITHOUT AUTH",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -267,12 +267,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes/1",
+					"raw": "{{urlHost}}{{restApiService}}/clients/1",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes",
+						"clients",
 						"1"
 					]
 				}
@@ -280,7 +280,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/facturas/{id} WITHOUT AUTH Copy",
+			"name": "http://localhost:8081/api/invoices/{id} WITHOUT AUTH Copy",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -288,12 +288,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/facturas/1",
+					"raw": "{{urlHost}}{{restApiService}}/invoices/1",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"facturas",
+						"invoices",
 						"1"
 					]
 				}
@@ -301,7 +301,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/facturas/product-filter/{term} WITHOUT AUTH",
+			"name": "http://localhost:8081/api/invoices/product-filter/{term} WITHOUT AUTH",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -309,12 +309,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/facturas/product-filter/son",
+					"raw": "{{urlHost}}{{restApiService}}/invoices/product-filter/son",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"facturas",
+						"invoices",
 						"product-filter",
 						"son"
 					]
@@ -323,7 +323,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes/{id} NOT FOUND",
+			"name": "http://localhost:8081/api/clients/{id} NOT FOUND",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -338,12 +338,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes/130",
+					"raw": "{{urlHost}}{{restApiService}}/clients/130",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes",
+						"clients",
 						"130"
 					]
 				}
@@ -351,7 +351,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes",
+			"name": "http://localhost:8081/api/clients",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -374,7 +374,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Eduardo\",\r\n    \"apellido\": \"User\",\r\n    \"email\": \"newuser@gmail.com\",\r\n    \"createdAt\": \"2019-12-16T16:50:12.646+0100\",\r\n    \"region\": {\r\n                \"id\": 3,\r\n                \"name\": \"Europe\"\r\n            }\r\n}",
+					"raw": "{\r\n    \"name\": \"Eduardo\",\r\n    \"lastname\": \"User\",\r\n    \"email\": \"newuser@gmail.com\",\r\n    \"createdAt\": \"2019-12-16T16:50:12.646+0100\",\r\n    \"region\": {\r\n                \"id\": 3,\r\n                \"name\": \"Europe\"\r\n            }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -382,19 +382,19 @@
 					}
 				},
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes",
+					"raw": "{{urlHost}}{{restApiService}}/clients",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes"
+						"clients"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes JSON empty",
+			"name": "http://localhost:8081/api/clients JSON empty",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -425,19 +425,19 @@
 					}
 				},
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes",
+					"raw": "{{urlHost}}{{restApiService}}/clients",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes"
+						"clients"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes JSON wrong email format",
+			"name": "http://localhost:8081/api/clients JSON wrong email format",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -468,19 +468,19 @@
 					}
 				},
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes",
+					"raw": "{{urlHost}}{{restApiService}}/clients",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes"
+						"clients"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes JSON wrong name size",
+			"name": "http://localhost:8081/api/clients JSON wrong name size",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -503,7 +503,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"nombre\": \"Ed\",\n\t\"apellido\": \"C.\",\n\t\"email\": \"asdf@gmail.com\"\n}",
+					"raw": "{\n\t\"name\": \"Ed\",\n\t\"lastname\": \"C.\",\n\t\"email\": \"asdf@gmail.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -511,19 +511,19 @@
 					}
 				},
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes",
+					"raw": "{{urlHost}}{{restApiService}}/clients",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes"
+						"clients"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes email DUPLICADO",
+			"name": "http://localhost:8081/api/clients email DUPLICADO",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -546,7 +546,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"nombre\": \"Eduardo\",\r\n    \"apellido\": \"User\",\r\n    \"email\": \"unemail@gmail.com\",\r\n    \"createdAt\": \"2019-12-16T16:50:12.646+0100\",\r\n    \"region\": {\r\n                \"id\": 3,\r\n                \"name\": \"Europe\"\r\n            }\r\n}",
+					"raw": "{\r\n\t\"name\": \"Eduardo\",\r\n    \"lastname\": \"User\",\r\n    \"email\": \"unemail@gmail.com\",\r\n    \"createdAt\": \"2019-12-16T16:50:12.646+0100\",\r\n    \"region\": {\r\n                \"id\": 3,\r\n                \"name\": \"Europe\"\r\n            }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -554,19 +554,19 @@
 					}
 				},
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes",
+					"raw": "{{urlHost}}{{restApiService}}/clients",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes"
+						"clients"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes/{id}",
+			"name": "http://localhost:8081/api/clients/{id}",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -589,7 +589,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\t{\r\n        \"nombre\": \"Client\",\r\n        \"apellido\": \"Updated\",\r\n        \"email\": \"updated@gmail.com\",\r\n        \"createdAt\": \"2019-12-16T15:50:12.646+0000\",\r\n    \t\"region\": {\r\n                \"id\": 3,\r\n                \"name\": \"Europe\"\r\n            }\r\n    }",
+					"raw": "\t{\r\n        \"name\": \"Client\",\r\n        \"lastname\": \"Updated\",\r\n        \"email\": \"updated@gmail.com\",\r\n        \"createdAt\": \"2019-12-16T15:50:12.646+0000\",\r\n    \t\"region\": {\r\n                \"id\": 3,\r\n                \"name\": \"Europe\"\r\n            }\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -597,12 +597,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes/2",
+					"raw": "{{urlHost}}{{restApiService}}/clients/2",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes",
+						"clients",
 						"2"
 					]
 				}
@@ -610,7 +610,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes/{id} EMAIL duplicado",
+			"name": "http://localhost:8081/api/clients/{id} EMAIL duplicado",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -633,7 +633,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\t{\r\n        \"nombre\": \"Client\",\r\n        \"apellido\": \"Updated\",\r\n        \"email\": \"unemail@gmail.com\",\r\n        \"createdAt\": \"2019-12-16T15:50:12.646+0000\",\r\n    \t\"region\": {\r\n                \"id\": 3,\r\n                \"name\": \"Europe\"\r\n            }\r\n    }",
+					"raw": "\t{\r\n        \"name\": \"Client\",\r\n        \"lastname\": \"Updated\",\r\n        \"email\": \"unemail@gmail.com\",\r\n        \"createdAt\": \"2019-12-16T15:50:12.646+0000\",\r\n    \t\"region\": {\r\n                \"id\": 3,\r\n                \"name\": \"Europe\"\r\n            }\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -641,12 +641,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes/3",
+					"raw": "{{urlHost}}{{restApiService}}/clients/3",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes",
+						"clients",
 						"3"
 					]
 				}
@@ -654,7 +654,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes/{id} NOT FOUND",
+			"name": "http://localhost:8081/api/clients/{id} NOT FOUND",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -677,7 +677,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\t{\r\n        \"nombre\": \"Client\",\r\n        \"apellido\": \"Updated\",\r\n        \"email\": \"updated@gmail.com\",\r\n    \t\"region\": {\r\n                \"id\": 3,\r\n                \"name\": \"Europe\"\r\n            }\r\n    }",
+					"raw": "\t{\r\n        \"name\": \"Client\",\r\n        \"lastname\": \"Updated\",\r\n        \"email\": \"updated@gmail.com\",\r\n    \t\"region\": {\r\n                \"id\": 3,\r\n                \"name\": \"Europe\"\r\n            }\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -685,12 +685,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes/146",
+					"raw": "{{urlHost}}{{restApiService}}/clients/146",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes",
+						"clients",
 						"146"
 					]
 				}
@@ -698,7 +698,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes/{id} nombre NULL",
+			"name": "http://localhost:8081/api/clients/{id} name NULL",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -721,7 +721,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\t{\r\n        \"apellido\": \"Updated\",\r\n        \"email\": \"updated@gmail.com\",\r\n    \t\"region\": {\r\n                \"id\": 3,\r\n                \"name\": \"Europe\"\r\n            }\r\n    }",
+					"raw": "\t{\r\n        \"lastname\": \"Updated\",\r\n        \"email\": \"updated@gmail.com\",\r\n    \t\"region\": {\r\n                \"id\": 3,\r\n                \"name\": \"Europe\"\r\n            }\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -729,12 +729,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes/2",
+					"raw": "{{urlHost}}{{restApiService}}/clients/2",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes",
+						"clients",
 						"2"
 					]
 				}
@@ -742,7 +742,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes/{id}",
+			"name": "http://localhost:8081/api/clients/{id}",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -764,12 +764,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes/5",
+					"raw": "{{urlHost}}{{restApiService}}/clients/5",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes",
+						"clients",
 						"5"
 					]
 				}
@@ -777,7 +777,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8081/api/clientes/{id} NOT FOUND",
+			"name": "http://localhost:8081/api/clients/{id} NOT FOUND",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -799,12 +799,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{urlHost}}{{restApiService}}/clientes/157",
+					"raw": "{{urlHost}}{{restApiService}}/clients/157",
 					"host": [
 						"{{urlHost}}{{restApiService}}"
 					],
 					"path": [
-						"clientes",
+						"clients",
 						"157"
 					]
 				}
@@ -855,13 +855,13 @@
 		},
 		{
 			"id": "8beb9e49-a594-4ec6-aa8f-58738c699ac0",
-			"key": "clienteApp",
+			"key": "clientApp",
 			"value": "angularapp",
 			"type": "string"
 		},
 		{
 			"id": "a830c9cd-e95e-4fe9-8d9f-80e41d8f6df0",
-			"key": "clienteAppSecret",
+			"key": "clientAppSecret",
 			"value": "12345",
 			"type": "string"
 		},

@@ -5,12 +5,12 @@ CREATE TABLE regions(
    name VARCHAR (250)
 );
 
-DROP TABLE IF EXISTS clientes;
+DROP TABLE IF EXISTS clients;
 
-CREATE TABLE clientes(
+CREATE TABLE clients(
    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-   nombre VARCHAR (250) NOT NULL,
-   apellido VARCHAR (250) NOT NULL,
+   name VARCHAR (250) NOT NULL,
+   lastname VARCHAR (250) NOT NULL,
    email VARCHAR (250) NOT NULL UNIQUE,
    created_at TIMESTAMP NOT NULL,
    photo VARCHAR (250),
@@ -18,40 +18,40 @@ CREATE TABLE clientes(
    FOREIGN KEY (region_id) REFERENCES regions
 );
 
-DROP TABLE IF EXISTS facturas;
+DROP TABLE IF EXISTS invoices;
 
-CREATE TABLE facturas(
+CREATE TABLE invoices(
    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-   descripcion VARCHAR (250),
-   observacion VARCHAR (250),
+   description VARCHAR (250),
+   note VARCHAR (250),
    created_at DATE,
-   cliente_id BIGINT NOT NULL,
-   FOREIGN KEY (cliente_id) REFERENCES clientes
+   client_id BIGINT NOT NULL,
+   FOREIGN KEY (client_id) REFERENCES clients
 );
 
-DROP TABLE IF EXISTS productos;
+DROP TABLE IF EXISTS products;
 
-CREATE TABLE productos(
+CREATE TABLE products(
    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-   nombre VARCHAR (250),
-   precio DOUBLE,
+   name VARCHAR (250),
+   price DOUBLE,
    created_at TIMESTAMP NOT NULL
 );
 
-DROP TABLE IF EXISTS facturas_items;
+DROP TABLE IF EXISTS invoice_items;
 
-CREATE TABLE facturas_items(
+CREATE TABLE invoice_items(
    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-   cantidad BIGINT,
-   factura_id BIGINT,
-   producto_id BIGINT NOT NULL,
-   FOREIGN KEY (factura_id) REFERENCES facturas,
-   FOREIGN KEY (producto_id) REFERENCES productos
+   quantity BIGINT,
+   invoice_id BIGINT,
+   product_id BIGINT NOT NULL,
+   FOREIGN KEY (invoice_id) REFERENCES invoices,
+   FOREIGN KEY (product_id) REFERENCES products
 );
 
-DROP TABLE IF EXISTS img_perfiles;
+DROP TABLE IF EXISTS profile_imgs;
 
-CREATE TABLE img_perfiles(
+CREATE TABLE profile_imgs(
    id BIGINT AUTO_INCREMENT PRIMARY KEY,
    filename VARCHAR (250) NOT NULL UNIQUE,
    file_type VARCHAR (250) NOT NULL,
@@ -59,25 +59,25 @@ CREATE TABLE img_perfiles(
 );
 
 DROP TABLE IF EXISTS roles;
-DROP TABLE IF EXISTS usuarios;
-DROP TABLE IF EXISTS usuarios_roles;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS user_roles;
 
 CREATE TABLE roles(
    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-   nombre VARCHAR (30) UNIQUE
+   name VARCHAR (30) UNIQUE
 );
 
-CREATE TABLE usuarios(
+CREATE TABLE users(
    id BIGINT AUTO_INCREMENT PRIMARY KEY,
    enabled BOOLEAN,
    username VARCHAR (20) UNIQUE,
    password VARCHAR (60)
 );
 
-CREATE TABLE usuarios_roles(
-   usuario_id BIGINT NOT NULL,
+CREATE TABLE user_roles(
+   user_id BIGINT NOT NULL,
    role_id BIGINT NOT NULL,
-   PRIMARY KEY (usuario_id, role_id),
+   PRIMARY KEY (user_id, role_id),
    FOREIGN KEY (role_id) REFERENCES roles,
-   FOREIGN KEY (usuario_id) REFERENCES usuarios
+   FOREIGN KEY (user_id) REFERENCES users
 );

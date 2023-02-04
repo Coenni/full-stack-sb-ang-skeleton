@@ -1,0 +1,92 @@
+<div class="card bg-light">
+    <div class="card-header">{{title}}: {{invoice.description}}</div>
+    <div class="card-body">
+        <h4 class="card-title">
+            <a [routerLink]="['/clients']" class="btn btn-light btn-xs">&laquo; back</a>
+        </h4>
+        <form #invoiceForm="ngForm">
+            <div class="form-group row" *ngIf="invoice.client">
+                <label for="client" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-6">
+                    <input type="text" name="client" class="form-control" disabled
+                        value="{{invoice.client.name}} {{invoice.client.lastname}}"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="description" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-6">
+                    <input type="text" id="description" name="description" class="form-control" [(ngModel)]="invoice.description" required
+                    #description="ngModel">
+                    <div class="alert alert-danger" *ngIf="description.invalid && description.touched || description.invalid && invoiceForm.submitted">
+                      The description is mandatory
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="note" class="col-sm-2 col-form-label">Note</label>
+                <div class="col-sm-6">
+                    <textarea name="note" id="note" class="form-control" [(ngModel)]="invoice.note"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <input type="text"
+                            placeholder="Add product"
+                            aria-label="Products"
+                            matInput
+                            [formControl]="autocompleteControl"
+                            [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="showProductName" (optionSelected)="productSelected($event)">
+                        <mat-option *ngFor="let product of productsFilters | async" [value]="product">
+                            {{product.name}}
+                        </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <div class="alert alert-danger" *ngIf="autocompleteControl.invalid && invoiceForm.submitted">
+                        La invoice tiene que tener al menos una línea
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info my-4" *ngIf="invoice.invoiceItems.length==0">
+                There is no lines asigned to invoice. You should add at least one.
+            </div>
+
+            <table class="table table-striped table-hover table-sm" *ngIf="invoice.invoiceItems.length>0">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of invoice.invoiceItems">
+                        <td>{{item.product.name}}</td>
+                        <td>{{item.product.price}}</td>
+                        <td><input type="number" value="{{item.quantity}}" class="form-control col-sm-4" (change)="updateQuantity(item.product.id, $event)"></td>
+                        <td>{{item.importCalculation()}}</td>
+                        <td><button class="btn btn-danger btn-sm" type="button"
+                            (click)="deleteItem(item.product.id)">x</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5 class="float-right" *ngIf="invoice.invoiceItems.length!>0">
+                Total <span class="badge badge-secondary">{{invoice.calculateTotal()}}</span>
+            </h5>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <input type="submit" (click)="createInvoice(invoiceForm)" value="Create Invoice" class="btn btn-secondary"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
