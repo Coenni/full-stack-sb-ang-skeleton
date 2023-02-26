@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
-import { formatDate, DatePipe } from '@angular/common';
 
 import { Client } from './client';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';

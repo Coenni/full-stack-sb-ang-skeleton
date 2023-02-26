@@ -1,0 +1,65 @@
+version: '3'
+services:
+
+  sbang-postgres:
+    image: "postgres:9.6-alpine"
+    container_name: sbang-postgres
+    volumes:
+      - sbang-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=sbang
+      - POSTGRES_USER=sbang
+      - POSTGRES_PASSWORD=sbang
+    networks:
+      - network-sbang
+
+  sbang-app:
+    build:
+      context: ./sbang-app
+    image: sbang-app:local
+    environment:
+      - DB_SERVER=sbang-postgres
+      - POSTGRES_DB=sbang
+      - POSTGRES_USER=sbang
+      - POSTGRES_PASSWORD=sbang
+    ports:
+      - "8080:8080"
+    links:
+      - sbang-postgres
+    depends_on:
+      - sbang-postgres
+    networks:
+      - network-sbang
+
+  sbang-ui:
+    build:
+      context: ./sbang-ui/clients-app
+    image: sbang-ui:local
+    ports:
+      - "4200:80"
+    networks:
+      - network-sbang
+#  sbang-ui:
+#    platform: linux/amd64
+#    build:
+#      context: ./sbang-ui/clients-app
+#    container_name: sbang-ui
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 8G
+#    ports:
+#      - "4200:1827"
+#    links:
+#      - sbang-app
+#    depends_on:
+#      - sbang-app
+
+
+volumes:
+  sbang-data:
+
+networks:
+  network-sbang:

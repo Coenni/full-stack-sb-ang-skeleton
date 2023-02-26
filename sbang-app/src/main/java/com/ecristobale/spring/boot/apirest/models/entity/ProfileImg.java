@@ -3,6 +3,7 @@ package com.ecristobale.spring.boot.apirest.models.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import java.io.Serializable;
 
@@ -28,8 +29,9 @@ public class ProfileImg implements Serializable {
 	
 	@Column(name = "file_type")
 	private String fileType;
-	
+
 	@Lob
+	@Type(type = "org.hibernate.type.BinaryType")
 	private byte[] img;
 
 }

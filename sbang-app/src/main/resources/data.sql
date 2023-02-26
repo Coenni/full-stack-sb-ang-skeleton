@@ -97,8 +97,8 @@ VALUES
 
 INSERT INTO users (username, password, enabled) 
 VALUES 
-('eduardo', '$2a$10$LhX3sOD9hJnO4HYwEdmKuOW3JYCh/CPFRYxW7R2whwetfIV/wZdqq', 1),
-('admin', '$2a$10$8CmHTgDYdCgFC6VHahNGgugnIOY/LiC37L1jaK2vmu4MJUPzDKTlS', 1);
+('eduardo', '$2a$10$LhX3sOD9hJnO4HYwEdmKuOW3JYCh/CPFRYxW7R2whwetfIV/wZdqq', true),
+('admin', '$2a$10$8CmHTgDYdCgFC6VHahNGgugnIOY/LiC37L1jaK2vmu4MJUPzDKTlS', true);
 
 INSERT INTO roles (name) 
 VALUES 
