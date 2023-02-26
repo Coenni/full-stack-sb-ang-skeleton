@@ -3,6 +3,10 @@
 - Google Firebase: https://clients-app-ecristobale.web.app/clients
 - Heroku (backend only): https://spring-boot-2clients-app.herokuapp.com/
 
+## How tun run locally
+- Local run  docker-compose up --force-recreate in main folder
+
+## Scenarios
 Main page without login:
 ![Alt text](web-app-screenshots/main_page.PNG?raw=true "Main Page")
 
@@ -52,12 +56,12 @@ But it was outdated and was open to refactoring, so I decided to do it myself
 - translating to english
 - adding lombok
 - upgrading angular and all other libs
+- FE/BE dockerize
 # TODO
 - FE/BE add user management module
 - FE/BE add inbox module
 - FE/BE add chat module
 - FE/BE add notification module
-- FE/BE dockerize
 - BE replace controller pojos with dtos and implement mappings
 - FE add multilang support
 - FE/BE openapi/swagger Contract First Approach
