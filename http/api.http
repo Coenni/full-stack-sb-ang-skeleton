@@ -1,0 +1,30 @@
+POST http://localhost:8081/auth/oauth/token
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic clientId secret
+
+grant_type=password&username=admin&password=pass
+
+> {%
+client.global.set("access_token", response.body.access_token);
+client.global.set("refresh_token", response.body.refresh_token);
+%}
+
+###
+GET http://localhost:8080/api/api/invoices/product-filter/a
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+###
+GET http://localhost:8080/api/api/clients/1
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+###
+GET http://localhost:8080/api/api/clients/page/0
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+###
+GET http://localhost:8080/api/me
+Content-Type: application/json
+Authorization: Bearer {{access_token}}

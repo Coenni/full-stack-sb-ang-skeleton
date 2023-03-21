@@ -15,6 +15,24 @@ services:
     networks:
       - network-sbang
 
+  sbang-auth:
+    build:
+      context: ./sbang-auth
+    image: sbang-auth:local
+    environment:
+      - DB_SERVER=sbang-postgres
+      - POSTGRES_DB=sbang
+      - POSTGRES_USER=sbang
+      - POSTGRES_PASSWORD=sbang
+    ports:
+      - "8081:8081"
+    links:
+      - sbang-postgres
+    depends_on:
+      - sbang-postgres
+    networks:
+      - network-sbang
+
   sbang-app:
     build:
       context: ./sbang-app

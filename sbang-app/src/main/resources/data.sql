@@ -95,21 +95,24 @@ VALUES
 ('Inma', 'Smith', 'jbanaansfdg3sdf@gmail.com', '2020-01-30 23:52:12.646', 1),
 ('Kobe', 'Legend', 'jbannaasdfgs3dfg@gmail.com', '2020-01-30 23:52:12.646', 2);
 
-INSERT INTO users (username, password, enabled) 
-VALUES 
-('eduardo', '$2a$10$LhX3sOD9hJnO4HYwEdmKuOW3JYCh/CPFRYxW7R2whwetfIV/wZdqq', true),
-('admin', '$2a$10$8CmHTgDYdCgFC6VHahNGgugnIOY/LiC37L1jaK2vmu4MJUPzDKTlS', true);
-
-INSERT INTO roles (name) 
-VALUES 
+INSERT INTO roles (name)
+VALUES
 ('ROLE_USER'),
 ('ROLE_ADMIN');
 
-INSERT INTO user_roles (user_id, role_id) 
-VALUES 
-(1, 1),
-(2, 1),
-(2, 2);
+
+INSERT INTO oauth_client_details (client_id, client_secret, scope, authorized_grant_types, authorities, access_token_validity)
+VALUES ('clientId', '{bcrypt}$2a$10$vCXMWCn7fDZWOcLnIEhmK.74dvK1Eh8ae2WrWlhr2ETPLoxQctN4.', 'read,write', 'password,refresh_token,client_credentials', 'ROLE_CLIENT', 300);
+
+-- The encrypted password is `pass`
+INSERT INTO users (id, username, password, enabled) VALUES (1, 'admin', '{bcrypt}$2a$10$cyf5NfobcruKQ8XGjUJkEegr9ZWFqaea6vjpXWEaSqTa2xL9wjgQC', true);
+INSERT INTO users (id, username, password, enabled) VALUES (2, 'eduardo', '{bcrypt}$2a$10$cyf5NfobcruKQ8XGjUJkEegr9ZWFqaea6vjpXWEaSqTa2xL9wjgQC', true);
+
+
+INSERT INTO authorities (username, authority) VALUES ('admin', 'ROLE_USER');
+INSERT INTO authorities (username, authority) VALUES ('admin', 'ROLE_ADMIN');
+INSERT INTO authorities (username, authority) VALUES ('eduardo', 'ROLE_USER');
+
 
 -- SELECT * FROM users u LEFT JOIN user_roles ur ON u.id = ur.user_id LEFT JOIN roles r ON ur.role_id = r.id;  -- see users & roles
 

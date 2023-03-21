@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user';
 
-import { URL_BACKEND } from 'src/app/config/config';
+import { URL_AUTH } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +35,9 @@ export class AuthService {
   }
 
   login(user: User): Observable<any> {
-    const urlEndpoint = URL_BACKEND + '/oauth/token';
-    const clientCredentials = btoa('angularapp' + ':' + '12345');
+    debugger;
+    const urlEndpoint = URL_AUTH + '/oauth/token';
+    const clientCredentials = btoa('clientId' + ':' + 'secret');
     const httpHeaders = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': 'Basic ' + clientCredentials});
     let params = new URLSearchParams();
@@ -75,6 +76,7 @@ export class AuthService {
   }
 
   hasRole(role: string): boolean {
+    console.log('roles:' + this.user.roles);
     return this.user.roles.includes(role);
   }
 

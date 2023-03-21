@@ -38,10 +38,10 @@ public class User implements Serializable {
 	private String password;
 	
 	private Boolean enabled;
-	
+
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="role_id"),
-			uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role_id"})})
+	@JoinTable(name = "authorities", joinColumns = @JoinColumn(name="username"), inverseJoinColumns = @JoinColumn(name="authority"),
+			uniqueConstraints = {@UniqueConstraint(columnNames = {"username", "authority"})})
 	private List<Role> roles;
 
 }

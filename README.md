@@ -6,6 +6,9 @@
 ## How tun run locally
 - Local run  docker-compose up --force-recreate in main folder
 
+admin/pass
+eduardo/pass
+
 ## Scenarios
 Main page without login:
 ![Alt text](web-app-screenshots/main_page.PNG?raw=true "Main Page")
@@ -57,6 +60,8 @@ But it was outdated and was open to refactoring, so I decided to do it myself
 - adding lombok
 - upgrading angular and all other libs
 - FE/BE dockerize
+- BE extract auth to separate service
+
 # TODO
 - FE/BE add user management module
 - FE/BE add inbox module
@@ -66,5 +71,10 @@ But it was outdated and was open to refactoring, so I decided to do it myself
 - FE add multilang support
 - FE/BE openapi/swagger Contract First Approach
 - BE upgrade java/mvn
-- BE extract auth to separate service
+- BE/DB atomity of service tables
 - FE/BE test coverage
+- microfrontend approach
+- github pipelines
+
+# Bugs
+- not showing images properly 
