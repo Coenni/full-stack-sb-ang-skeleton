@@ -66,6 +66,8 @@ But it was outdated and was open to refactoring, so I decided to do it myself
 - FE/BE add user management module
 - FE/BE add inbox module
 - FE/BE add chat module
+- Add Prometeus, Grafana, Zipkin support
+- Add Telegram/Slack alerting
 - FE/BE add notification module
 - BE replace controller pojos with dtos and implement mappings
 - FE add multilang support
