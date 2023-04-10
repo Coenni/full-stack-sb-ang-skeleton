@@ -64,13 +64,15 @@ DROP TABLE IF EXISTS authorities CASCADE;
 
 CREATE TABLE roles(
    id SERIAL PRIMARY KEY,
-   name VARCHAR (30) UNIQUE
+   authority VARCHAR (30) UNIQUE
 );
 
 CREATE TABLE users(
    id SERIAL PRIMARY KEY,
    enabled BOOLEAN,
    username VARCHAR (20) UNIQUE,
+   firstname VARCHAR (50),
+   lastname VARCHAR (50),
    password VARCHAR (400)
 );
 

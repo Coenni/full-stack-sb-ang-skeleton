@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from './user';
 
 import { URL_AUTH } from 'src/app/config/config';
+import {User} from "@app/_models";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private _user: User;
-  private _token: string;
+  private _user: User | undefined;
+  private _token: string | undefined;
 
   constructor(private http: HttpClient) { }
 
@@ -18,20 +18,21 @@ export class AuthService {
     if (this._user != null) {
       return this._user;
     } else if (this._user == null && sessionStorage.getItem('user') != null) {
+      // @ts-ignore
       this._user = JSON.parse(sessionStorage.getItem('user')) as User;
       return this._user;
     }
     return new User();
   }
 
-  public get token(): string {
+  public get token(): string | undefined {
     if (this._token != null) {
       return this._token;
-    } else if (this._token == null && sessionStorage.getItem('token') != null) {
-      this._token = sessionStorage.getItem('token');
+    } else if (this._token == null && localStorage.getItem('token') != null) {
+      this._token = localStorage.getItem('token') || undefined;
       return this._token;
     }
-    return null;
+    return undefined;
   }
 
   login(user: User): Observable<any> {
@@ -41,8 +42,8 @@ export class AuthService {
       'Authorization': 'Basic ' + clientCredentials});
     let params = new URLSearchParams();
     params.set('grant_type', 'password');
-    params.set('username', user.username);
-    params.set('password', user.password);
+    params.set('username', user.username!!);
+    params.set('password', user.password!!);
     return this.http.post<any>(urlEndpoint, params.toString(), {headers: httpHeaders});
   }
 
@@ -67,11 +68,9 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    let payload = this.obtainPayload(this.token);
-    if (payload != null && payload.user_name && payload.user_name.length > 0) {
-      return true;
-    }
-    return false;
+    let payload = this.obtainPayload(this.token as string);
+    return !!(payload != null && payload.user_name && payload.user_name.length > 0);
+
   }
 
   hasRole(role: string): boolean {
@@ -80,8 +79,8 @@ export class AuthService {
   }
 
   logout(): void {
-    this._token = null;
-    this._user = null;
+    this._token = undefined;
+    this._user = undefined;
     //sessionStorage.clear(); removes everything
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');

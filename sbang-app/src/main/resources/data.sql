@@ -95,18 +95,18 @@ VALUES
 ('Inma', 'Smith', 'jbanaansfdg3sdf@gmail.com', '2020-01-30 23:52:12.646', 1),
 ('Kobe', 'Legend', 'jbannaasdfgs3dfg@gmail.com', '2020-01-30 23:52:12.646', 2);
 
-INSERT INTO roles (name)
+INSERT INTO roles (authority)
 VALUES
 ('ROLE_USER'),
 ('ROLE_ADMIN');
 
-
+delete from oauth_client_details;
 INSERT INTO oauth_client_details (client_id, client_secret, scope, authorized_grant_types, authorities, access_token_validity)
-VALUES ('clientId', '{bcrypt}$2a$10$vCXMWCn7fDZWOcLnIEhmK.74dvK1Eh8ae2WrWlhr2ETPLoxQctN4.', 'read,write', 'password,refresh_token,client_credentials', 'ROLE_CLIENT', 300);
+VALUES ('clientId', '$2a$10$vCXMWCn7fDZWOcLnIEhmK.74dvK1Eh8ae2WrWlhr2ETPLoxQctN4.', 'read,write', 'password,refresh_token,client_credentials', 'ROLE_CLIENT', 300);
 
 -- The encrypted password is `pass`
-INSERT INTO users (id, username, password, enabled) VALUES (1, 'admin', '{bcrypt}$2a$10$cyf5NfobcruKQ8XGjUJkEegr9ZWFqaea6vjpXWEaSqTa2xL9wjgQC', true);
-INSERT INTO users (id, username, password, enabled) VALUES (2, 'eduardo', '{bcrypt}$2a$10$cyf5NfobcruKQ8XGjUJkEegr9ZWFqaea6vjpXWEaSqTa2xL9wjgQC', true);
+INSERT INTO users (id, username, firstname, lastname, password, enabled) VALUES (1, 'admin', 'admin', 'admin', '$2a$10$cyf5NfobcruKQ8XGjUJkEegr9ZWFqaea6vjpXWEaSqTa2xL9wjgQC', true);
+INSERT INTO users (id, username, firstname, lastname, password, enabled) VALUES (2, 'eduardo', 'coenni', 'last', '$2a$10$cyf5NfobcruKQ8XGjUJkEegr9ZWFqaea6vjpXWEaSqTa2xL9wjgQC', true);
 
 
 INSERT INTO authorities (username, authority) VALUES ('admin', 'ROLE_USER');
