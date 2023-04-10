@@ -61,12 +61,13 @@ But it was outdated and was open to refactoring, so I decided to do it myself
 - upgrading angular and all other libs
 - FE/BE dockerize
 - BE extract auth to separate service
+- FE/BE add user management module
 
 # TODO
-- FE/BE add user management module
 - FE/BE add inbox module
 - FE/BE add chat module
 - Add Prometeus, Grafana, Zipkin support
+- Add SBA
 - Add Telegram/Slack alerting
 - FE/BE add notification module
 - BE replace controller pojos with dtos and implement mappings
@@ -80,3 +81,4 @@ But it was outdated and was open to refactoring, so I decided to do it myself
 
 # Bugs
 - not showing images properly 
+- user management register not working
